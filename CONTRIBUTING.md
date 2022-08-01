@@ -4,8 +4,8 @@ Thanks for your desire to contribute to this project!
 
 ## Preparing your fork
 
-1. Hit 'fork' on Github, creating e.g. `yourname/team-repo`.
-2. Clone your project: `git clone https://github.com/yourname/team-repo.git`.
+1. Hit 'fork' on Github, creating e.g. `yourname/SNVariome`.
+2. Clone your project: `git clone https://github.com/yourname/SNVariome`.
 3. Create a branch: `cd team-repo; git checkout -b new-feature`.
 
 ## Making your changes
