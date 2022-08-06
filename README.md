@@ -45,9 +45,16 @@ No instructions yet.
 
 ### Dependencies
 
-- R
-- RStudio
-- shiny
+- R 4.2.1
+- [RStudio](https://www.rstudio.com/products/rstudio/)
+
+#### R Packages
+
+```r
+install.packages(c('shiny', 'BiocManager'))
+
+BiocManager::install("Path2PPI")
+```
 
 
 ### Steps to run
@@ -70,6 +77,6 @@ Winfred Gatua | winfred.gatua@bristol.ac.uk | Team member
 
 ## References
 
-Gerasimavicius L, Livesey BJ, Marsh JA. Loss-of-function, gain-of-function and dominant-negative mutations have profoundly different effects on protein structure. Nat Commun. 2022 Jul 6;13(1):3895. doi: 10.1038/s41467-022-31686-6. PMID: 35794153; PMCID: PMC9259657.
+Gerasimavicius L, Livesey BJ, Marsh JA. Loss-of-function, gain-of-function and dominant-negative mutations have profoundly different effects on protein structure. Nat Commun. 2022 Jul 6;13(1):3895. [doi: 10.1038/s41467-022-31686-6](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9259657/). PMID: 35794153; PMCID: PMC9259657.
 
-Kim M, Park J, Bouhaddou M, Kim K, Rojc A, Modak M, Soucheray M, McGregor MJ, O'Leary P, Wolf D, Stevenson E, Foo TK, Mitchell D, Herrington KA, Muñoz DP, Tutuncuoglu B, Chen KH, Zheng F, Kreisberg JF, Diolaiti ME, Gordan JD, Coppé JP, Swaney DL, Xia B, van 't Veer L, Ashworth A, Ideker T, Krogan NJ. A protein interaction landscape of breast cancer. Science. 2021 Oct;374(6563):eabf3066. doi: 10.1126/science.abf3066. Epub 2021 Oct 1. PMID: 34591612; PMCID: PMC9040556.
+Kim M, Park J, Bouhaddou M, Kim K, Rojc A, Modak M, Soucheray M, McGregor MJ, O'Leary P, Wolf D, Stevenson E, Foo TK, Mitchell D, Herrington KA, Muñoz DP, Tutuncuoglu B, Chen KH, Zheng F, Kreisberg JF, Diolaiti ME, Gordan JD, Coppé JP, Swaney DL, Xia B, van 't Veer L, Ashworth A, Ideker T, Krogan NJ. A protein interaction landscape of breast cancer. Science. 2021 Oct;374(6563):eabf3066. [doi: 10.1126/science.abf3066](https://www.science.org/doi/10.1126/science.abf3066). Epub 2021 Oct 1. PMID: 34591612; PMCID: PMC9040556.
