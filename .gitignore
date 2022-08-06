@@ -1,105 +1,52 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
+# History files
+.Rhistory
+.Rapp.history
 
-# C extensions
-*.so
+# Session Data files
+.RData
+.RDataTmp
 
-# Distribution / packaging
-.Python
-#env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-dask-worker-space/
-*.egg-info/
-.installed.cfg
-*.egg
-*.err
-*.out
-*.db
-*.py*.sh
-*.tsv
-*.csv
-*.gz*
+# User-specific files
+.Ruserdata
 
+# Example code in package build process
+*-Ex.R
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+# Output files from R CMD build
+/*.tar.gz
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+# Output files from R CMD check
+/*.Rcheck/
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.pdf
+# RStudio files
+.Rproj.user/
 
-# Translations
-*.mo
-*.pot
+# produced vignettes
+vignettes/*.html
+vignettes/*.pdf
 
-# Django stuff:
-*.log
+# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
+.httr-oauth
 
-# Sphinx documentation
-docs/_build/
+# knitr and R markdown default cache directories
+*_cache/
+/cache/
 
-# PyBuilder
-target/
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
 
-# DotEnv configuration
-.env
+# R Environment Variables
+.Renviron
 
-# conda
-.conda
+# pkgdown site
+docs/
 
-# Database
-*.db
-*.rdb
+# translation temp files
+po/*~
 
-# Pycharm
-.idea
+# RStudio Connect folder
+rsconnect/
 
-# Jupyter NB Checkpoints
-.ipynb_checkpoints/
-
-# exclude data from source control by default
-/data/
-
-#snakemake
-.snakemake/
-
-
-# exclude test data used for development
-to_be_deleted/test_data/data/ref
-to_be_deleted/test_data/data/reads
-
-#logs
-logs/
-
-# vscode
-.vscode/
-
-# .java/fonts dir get created when creating fastqc conda env
-.java/
-
-/.vscode/settings.json
+# Data
+data/
