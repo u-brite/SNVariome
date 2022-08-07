@@ -66,7 +66,7 @@ To run this app, open RStudio and use the below code in the console:
 
 ```r
 library(shiny)
-shiny::runGitHub(username = "u-brite", repo = "SNVariome" )
+shiny::runGitHub(username = "u-brite", repo = "SNVariome", ref = "main", subdir = "app")
 ```
 
 ## Results
