@@ -1,7 +1,12 @@
+<p align="center">
+  <img width="300" height="300" src="logo.png">
+</p>
+
 # SNVariome
 
 A shiny app that integrates protein-protein interactions, clinical variants, & protein structure to enhance the interactome.
 
+View our [app]().
 
 ## Table of Contents
 
@@ -33,14 +38,12 @@ During Hackin' Omics, we'd like to:
 ## Data
 
 - [SigCom LINCS](https://maayanlab.cloud/sigcom-lincs/#/) is a web-based search engine or API that serves over 1.5 million gene expression signatures processed, analyzed, and visualized from LINCS, GTEx, and GEO. 
-- Extent of Disease Clustering (EDC) values for disease genes via an excel sheet from https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9259657/bin/41467_2022_31686_MOESM4_ESM.xlsx
+- Extent of Disease Clustering (EDC) values for disease genes via an [excel sheet](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9259657/bin/41467_2022_31686_MOESM4_ESM.xlsx').
+- Manually curated [PPIs](https://www.sciencedirect.com/science/article/pii/S2589004220307185?via%3Dihub#mmc1) from STRING and four additional proteomes-scale interactome studies, i.e., Human Interactome I and II, BioPlex, QUBIC, and CoFrac.
 
 ## Usage
 
 No instructions yet.
-
-
-### Installation
 
 
 ### Dependencies
@@ -51,7 +54,7 @@ No instructions yet.
 #### R Packages
 
 ```r
-install.packages(c('shiny', 'BiocManager', 'shinyjs', 'shinythemes', 'bslib', 'httr', 'jsonlite', 'xml2'))
+install.packages(c('shiny', 'BiocManager', 'shinyjs', 'shinythemes', 'bslib', 'httr', 'jsonlite', 'xml2', 'DT'))
 
 BiocManager::install(c('wppi'))
 ```
@@ -59,21 +62,25 @@ BiocManager::install(c('wppi'))
 
 ### Steps to run
 
+To run this app, open RStudio and use the below code in the console:
 
+```r
+library(shiny)
+shiny::runGitHub(username = "u-brite", repo = "SNVariome" )
+```
 
 ## Results
 
 
 ## Team Members
 
-Shaurita Hutchins | shutchins@uab.edu | Team leader   
-Romella Sagatelian | rsagatelian@gmail.com | Team member  
-Bernhard Hane | bghane@uabmc.edu | Team member   
-Oladosu Tosin Ayodeji | oladosutosinayodeji@gmail.com | Team member   
-Bharat Mishra | bharat26@uab.edu | Team member  
-Hailey Levi | Hlevi001@uab.edu | Team member  
-Pooja Singaravelu | poojas@bicpu.edu.in | Team member  
-Winfred Gatua | winfred.gatua@bristol.ac.uk | Team member 
+[Shaurita Hutchins](https://github.com/sdhutchins) | Team leader   
+[Bernhard Hane](https://github.com/swiss-made) | Team member   
+[Oladosu Tosin Ayodeji](https://github.com/AIT1995) | Team member   
+[Bharat Mishra](https://github.com/bharatm26) | Team member  
+[Hailey Levi](https://github.com/orgs/u-brite/people/chaoticsci) | Team member  
+[Pooja Singaravelu](https://github.com/orgs/u-brite/people/Poojas241) | Team member  
+[Maria Jose](https://github.com/MariaJose501) | Team member
 
 ## References
 
