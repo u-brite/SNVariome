@@ -43,7 +43,9 @@ During Hackin' Omics, we'd like to:
 
 ## Usage
 
-No instructions yet.
+Run our shiny app either using the hosted version or via the rconsole.
+
+The input is a gene or variant and the output is signature data, edc values, and PPIs.
 
 
 ### Dependencies
@@ -70,6 +72,10 @@ shiny::runGitHub(username = "u-brite", repo = "SNVariome", ref = "main", subdir 
 ```
 
 ## Results
+
+After using the human protein interactome to find protein-protein interactions across a list of clinic variants classified as either gain of function, loss of function, or haploinsufficient, we found that out of the over 1200 genes indicated in protein interaction, only 104 of the 135 with autosomal dominant inheritance were found to have interactions in the interactome. We chose autosomal dominant genes since there is a highly significant tendency for disease mutations in AD genes to be more clustered.
+
+While applying our methods, we found that we were able to see that our networks supported the literature and ultimately extended the knowledge-base by adding data regarding signatures. Specifically, looking at BRCA1 (breast cancer) has shown us novel signatures and interactions not seen in literature up until our analysis.
 
 
 ## Team Members
