@@ -6,7 +6,7 @@
 
 A shiny app that integrates protein-protein interactions, clinical variants, & protein structure to enhance the interactome.
 
-View our [app]().
+View our [app](http://159.65.223.251:3838/home/app/).
 
 ## Table of Contents
 

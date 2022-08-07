@@ -22,12 +22,12 @@ RUN R -e 'BiocManager::install(ask = F)' && R -e 'BiocManager::install("wppi")'
 RUN echo "local(options(shiny.port = 3838, shiny.host = '0.0.0.0'))" > /usr/lib/R/etc/Rprofile.site
 
 RUN addgroup --system app && adduser --system --ingroup app app
-WORKDIR /home/app
+WORKDIR /home/app/app
 COPY app .
 
-RUN chown app:app -R /home/app
+RUN chown app:app -R /home/app/app
 USER app
 
 EXPOSE 3838
 
-CMD ["R", "-e", "shiny::runApp('/home/app')"]
+CMD ["R", "-e", "shiny::runApp('/home/app/app')"]
