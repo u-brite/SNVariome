@@ -54,7 +54,7 @@ No instructions yet.
 #### R Packages
 
 ```r
-install.packages(c('shiny', 'BiocManager', 'shinyjs', 'shinythemes', 'bslib', 'httr', 'jsonlite', 'xml2', 'DT'))
+install.packages(c('shiny', 'BiocManager', 'shinyjs', 'bslib', 'httr', 'jsonlite', 'xml2', 'DT'))
 
 BiocManager::install(c('wppi'))
 ```
