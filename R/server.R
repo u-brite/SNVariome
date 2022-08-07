@@ -1,4 +1,9 @@
 library(shiny)
+library(mygene)
+library(DT)
+library(shinyjs)
+library(shinythemes)
+
 shinyServer(function(input, output) {
   
   mygene_results <- reactive({
