@@ -4,6 +4,7 @@ library(DT)
 library(shinyjs)
 library(shinythemes)
 
+
 shinyUI(
   navbarPage(inverse = TRUE,
              title = "SNVariome",
