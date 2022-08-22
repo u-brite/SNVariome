@@ -6,7 +6,6 @@
 
 A shiny app that integrates protein-protein interactions, clinical variants, & protein structure to enhance the interactome.
 
-View our [app](http://159.65.223.251:3838/home/app/).
 
 ## Table of Contents
 
@@ -40,6 +39,7 @@ During Hackin' Omics, we'd like to:
 - [SigCom LINCS](https://maayanlab.cloud/sigcom-lincs/#/) is a web-based search engine or API that serves over 1.5 million gene expression signatures processed, analyzed, and visualized from LINCS, GTEx, and GEO. 
 - Extent of Disease Clustering (EDC) values for disease genes via an [excel sheet](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9259657/bin/41467_2022_31686_MOESM4_ESM.xlsx').
 - Manually curated [PPIs](https://www.sciencedirect.com/science/article/pii/S2589004220307185?via%3Dihub#mmc1) from STRING and four additional proteomes-scale interactome studies, i.e., Human Interactome I and II, BioPlex, QUBIC, and CoFrac.
+- Variant data from [myvariant.info](https://myvariant.info/) using its API via the R package.
 
 ## Usage
 
@@ -56,9 +56,9 @@ The input is a gene or variant and the output is signature data, edc values, and
 #### R Packages
 
 ```r
-install.packages(c('shiny', 'BiocManager', 'shinyjs', 'bslib', 'httr', 'jsonlite', 'xml2', 'DT'))
+install.packages(c('shiny', 'BiocManager', 'shinyjs', 'bslib', 'httr', 'jsonlite', 'xml2', 'DT', 'reticulate'))
 
-BiocManager::install(c('wppi'))
+BiocManager::install(c('wppi', 'myvariant'))
 ```
 
 
