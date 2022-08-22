@@ -1,13 +1,13 @@
 library(shiny)
-library(mygene)
 library(DT)
 library(shinyjs)
 library(shinythemes)
 library(bslib)
+library(myvariant)
 
 uab_theme <- bs_theme(
-  bg = "white", fg = "#144B39", primary = "#1E6B52", secondary = "#88C408",
-  base_font = font_google("Poppins")
+  bg = "#144B39", fg = "white", primary = "#1E6B52", secondary = "#88C408",
+  base_font = font_google("Roboto Mono")
 )
 
 
@@ -19,11 +19,11 @@ shinyUI(
     tabPanel(
       "Data table",
       sidebarLayout(
-        sidebarPanel(textInput("accession", "Input Gene or Variant", value = "NM_000680.3"),
-          width = 2
+        sidebarPanel(textInput("variant", "Input RSID or Gene Symbol", value = "rs756206533, BRCA1"),
+          width = 3
         ),
-        mainPanel(dataTableOutput("mygene_table"),
-          width = 8
+        mainPanel(dataTableOutput("myvar_table"),
+          width = 9
         )
       )
     ),
