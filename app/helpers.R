@@ -9,5 +9,5 @@ library(geomnet)
 library(igraph)
 
 graph <- graph_from_data_frame(edges, directed = FALSE)
-#Louvain Comunity Detection
+#Louvain Community Detection
 cluster <- cluster_louvain(graph)
