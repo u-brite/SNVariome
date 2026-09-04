@@ -1,0 +1,3 @@
+# Rhino uses this explicit manifest as the only dependency-discovery source.
+*
+!dependencies.R

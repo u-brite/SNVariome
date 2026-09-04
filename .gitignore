@@ -47,3 +47,6 @@ rsconnect/
 
 # vscode
 .DS_Store
+
+# Local research and browser-validation artifacts
+/tmp/
