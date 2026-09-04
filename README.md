@@ -1,95 +1,184 @@
 <p align="center">
-  <img width="300" height="300" src="logo.png">
+  <img width="300" height="300" src="logo.png" alt="SNVariome logo">
 </p>
 
 # SNVariome
 
-A shiny app that integrates protein-protein interactions, clinical variants, & protein structure to enhance the interactome.
+SNVariome is a mechanism-aware, variant-centered interactome. It integrates
+clinical variant records, molecular mechanism annotations, protein structure,
+protein-protein interactions, drug-gene relationships, phenotype context, and
+perturbational signatures to support how a protein-altering variant may affect
+molecular function and interaction networks.
 
+The scientific premise is that pathogenic variants acting through
+gain-of-function, loss-of-function, dominant-negative, and haploinsufficiency
+mechanisms can show different structural and interaction patterns. SNVariome
+therefore keeps direct measurements, curated classifications, computational
+predictions, contextual associations, conflicts, and missing evidence visibly
+distinct. The integrated evidence is intended to support variant
+interpretation and prioritization. It is not a new pathogenicity classifier.
 
-## Table of Contents
+## Target evidence layers
 
-- [SNVariome](#snvariome)
-    - [Background](#Background)
-    - [Hackathon Goals](#hackathon-goals)
-    - [Data](#data)
-    - [Usage](#usage)
-        - [Installation](#installation)
-        - [Dependencies](#dependencies)
-    - [Results](#results)
-    - [Team Members](#team-members)
-    - [References](#references)
+The complete product will connect seven evidence layers around a resolved
+variant:
 
-## Background
+1. **Clinical variant evidence:** ClinVar classification, review status,
+   condition, and clinical context.
+2. **Molecular mechanism:** Curated GOF, LOF, dominant-negative, and
+   haploinsufficiency assertions.
+3. **Protein structure:** Stability effects, domains, functional sites,
+   interfaces, and Extent of Disease Clustering (EDC) context.
+4. **Protein interactions:** Wild-type and mutant interaction measurements or
+   clearly labeled predictions.
+5. **Drug-gene relationships:** Traceable associations that do not imply a
+   treatment recommendation.
+6. **Phenotypes and pathways:** HPO terms, disease associations, and pathway
+   context.
+7. **Perturbational signatures:** SigCom LINCS results presented as hypotheses,
+   not evidence of variant rescue.
 
-Most existing PPI databases only curate a binary interactome. However, integrating protein structure is critical in understanding complex human diseases because variants (GOF/LOF) have significant impacts on protein structure. Thus, having a more complete interactome will aid in the identification of pathogenic variants.
+These layers form a more complete interactome than a binary list of protein
+partners because they preserve the allele, mechanism, structural setting,
+experimental context, and provenance of each relationship.
 
-SNVariome is a tool that seeks to integrate protein structure, protein-protein interactions, drug-gene interaction data, variant data (using ClinVar, GOF/LOF data), and phenotype data (HPO terms) to develop a comprehensive interactome of clinical variants. We will utilize the SigCom LINCS API and integrate a publicly available dataset that has already examined GOF/LOF impacts on protein structure ([pmcid: PMC9259657](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9259657/)). Our first test case will be a list of genes/variants associated with breast cancer which should validate and expand the findings of [DOI: 10.1126/science.abf3066](https://www.science.org/doi/10.1126/science.abf3066). 
+## Current application
 
-## Hackathon Goals
+The current application is the first breast-cancer validation slice. It
+supports three curated PIK3CA variants:
 
-During Hackin' Omics, we'd like to:
-1. Determine an appropriate way or ways to utilize the EDC values generated regarding GOF/LOF impacts on protein structure of disease genes
-2. Integrate the SigCom LINCS API with EDC values for disease genes to identify signatures associated with diseases
-3. Implement the Extent of Disease Clustering (EDC) method in a shiny app that incorporates the SigCom LINCS API and other data sources to predict or identify novel pathogenic variants of diseases.
+- `p.Glu545Lys` (`p.E545K`)
+- `p.Met1043Val` (`p.M1043V`)
+- `p.His1047Arg` (`p.H1047R`)
 
+A persistent search sidebar and five application views share one versioned
+evidence bundle:
 
-## Data
+1. **Overview** resolves supported genomic, transcript, and protein notations
+   and provides a selectable table of curated variants.
+2. **Evidence** presents identity, mechanism, structural context, phenotypes,
+   hypotheses, and explicitly missing evidence.
+3. **Interactions** provides a searchable table and a record-level evidence
+   inspector.
+4. **Network** displays a focused allele-centered interaction graph with
+   selectable evidence-aware edges.
+5. **Sources** lists source records and exports the selected variant with all
+   sources it references.
 
-- [SigCom LINCS](https://maayanlab.cloud/sigcom-lincs/#/) is a web-based search engine or API that serves over 1.5 million gene expression signatures processed, analyzed, and visualized from LINCS, GTEx, and GEO. 
-- Extent of Disease Clustering (EDC) values for disease genes via an [excel sheet](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9259657/bin/41467_2022_31686_MOESM4_ESM.xlsx').
-- Manually curated [PPIs](https://www.sciencedirect.com/science/article/pii/S2589004220307185?via%3Dihub#mmc1) from STRING and four additional proteomes-scale interactome studies, i.e., Human Interactome I and II, BioPlex, QUBIC, and CoFrac.
-- Variant data from [myvariant.info](https://myvariant.info/) using its API via the R package.
+This release demonstrates the evidence architecture and allele-specific
+interaction workflow. It does not yet search the full GOF/LOF dataset, populate
+ClinVar evidence, calculate EDC, recommend drugs, or infer an effect for
+variants outside the PIK3CA demonstration bundle.
 
-## Usage
+## Evidence scope
 
-Run our shiny app either using the hosted version or via the rconsole.
+The interaction examples are a focused qualitative subset reconstructed from
+Figure 3C of Kim et al. The study compared wild-type and mutant PIK3CA affinity
+purification mass spectrometry results in MCF7 cells. Exact quantitative effect
+sizes are not included because the corresponding supplementary table was not
+available during curation. The records retain this limitation rather than
+estimating values from the figure.
 
-The input is a gene or variant and the output is signature data, edc values, and PPIs.
+The repository retains five original source artifacts under `data/source/`:
 
+| File | Retained content |
+| --- | --- |
+| `goflof_ClinVar_v062021.csv` | 5,085 variant-level GOF or LOF labels |
+| `allels_ProteinList.csv` | Allele ID to gene-symbol mappings |
+| `edc_dist.csv` | Gene-level inheritance, mechanism, effect, and EDC values |
+| `proteins.csv` | Gene symbols represented in the original analysis |
+| `proteins_interactome.csv` | Protein-pair interaction edge list |
 
-### Dependencies
+The GOF/LOF table is associated with the resource described by Bayrak et al.
+Gerasimavicius et al. used a Bayrak et al. variant-level mechanism dataset as
+an independent validation set when studying mechanism-specific structural
+effects. These retained files must undergo identifier, release-provenance,
+licensing, and redistribution audits before their records are migrated into
+the public evidence bundle.
 
-- R 4.2.1
-- [RStudio](https://www.rstudio.com/products/rstudio/)
+The Gerasimavicius et al. study also provides the structural rationale for EDC.
+EDC is a protein-level measure of how known disease-associated residues cluster
+in three-dimensional space. It is contextual evidence, not a per-variant
+pathogenicity score. A high EDC may support a non-LOF pattern, but it cannot by
+itself distinguish GOF from a dominant-negative mechanism.
 
-#### R Packages
+Each assertion is labeled with one of the evidence classes defined in
+[`PLAN.md`](PLAN.md): direct experimental, curated clinical, computational
+prediction, contextual association, conflicting, or missing. An unchanged
+measured interaction is not treated as missing evidence.
 
-```r
-install.packages(c('shiny', 'BiocManager', 'shinyjs', 'bslib', 'httr', 'jsonlite', 'xml2', 'DT', 'reticulate'))
+## Project structure
 
-BiocManager::install(c('wppi', 'myvariant'))
+The application follows Rhino's modular organization:
+
+```text
+app.R                         Rhino entry point
+app/main.R                    Top-level UI and server composition
+app/logic/                    Evidence, normalization, and network logic
+app/view/                     Five search and dashboard-view modules
+app/data/pik3ca/              Versioned curated evidence fixture
+data/source/                  Retained source datasets awaiting migration
+schema/                       JSON Schema for evidence bundles
+tests/testthat/               Contract, logic, and module tests
+dependencies.R               Runtime and test dependency manifest
+renv.lock                     Reproducible R dependency lockfile
 ```
 
+Rhino starts the application from `app/main.R`.
 
-### Steps to run
+## Local setup
 
-To run this app, open RStudio and use the below code in the console:
+Install R 4.5.1, clone the repository, and run:
 
 ```r
-library(shiny)
-shiny::runGitHub(username = "u-brite", repo = "SNVariome", ref = "main", subdir = "app")
+install.packages("renv")
+renv::restore()
+shiny::runApp(".")
 ```
 
-## Results
+`renv::restore()` installs the exact package versions recorded in `renv.lock`.
+Use `renv::snapshot()` only after deliberately changing `dependencies.R` and
+reviewing the resulting lockfile diff.
 
-After using the human protein interactome to find protein-protein interactions across a list of clinic variants classified as either gain of function, loss of function, or haploinsufficient, we found that out of the over 1200 genes indicated in protein interaction, only 104 of the 135 with autosomal dominant inheritance were found to have interactions in the interactome. We chose autosomal dominant genes since there is a highly significant tendency for disease mutations in AD genes to be more clustered.
+## Validation
 
-While applying our methods, we found that we were able to see that our networks supported the literature and ultimately extended the knowledge-base by adding data regarding signatures. Specifically, looking at BRCA1 (breast cancer) has shown us novel signatures and interactions not seen in literature up until our analysis.
+Run the focused test suite from the repository root:
 
+```r
+testthat::test_dir("tests/testthat")
+```
 
-## Team Members
+The tests validate the curated bundle, equivalent aliases for all three
+variants, unmatched-input handling, missing-data semantics, network record
+consistency, duplicate partners, schema-valid downloads, and search-module
+reactivity.
 
-[Shaurita Hutchins](https://github.com/sdhutchins) | Team leader   
-[Bernhard Hane](https://github.com/swiss-made) | Team member   
-[Oladosu Tosin Ayodeji](https://github.com/AIT1995) | Team member   
-[Bharat Mishra](https://github.com/bharatm26) | Team member  
-[Hailey Levi](https://github.com/orgs/u-brite/people/chaoticsci) | Team member  
-[Pooja Singaravelu](https://github.com/orgs/u-brite/people/Poojas241) | Team member  
-[Maria Jose](https://github.com/MariaJose501) | Team member
+## Container
+
+Build and run the application with:
+
+```bash
+docker build -t snvariome .
+docker run --rm -p 3838:3838 snvariome
+```
+
+Then open `http://localhost:3838`.
 
 ## References
 
-Gerasimavicius L, Livesey BJ, Marsh JA. Loss-of-function, gain-of-function and dominant-negative mutations have profoundly different effects on protein structure. Nat Commun. 2022 Jul 6;13(1):3895. [doi: 10.1038/s41467-022-31686-6](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9259657/). PMID: 35794153; PMCID: PMC9259657.
+Kim M, Park J, Bouhaddou M, et al. A protein interaction landscape of breast
+cancer. *Science*. 2021;374(6563):eabf3066.
+[doi:10.1126/science.abf3066](https://doi.org/10.1126/science.abf3066).
 
-Kim M, Park J, Bouhaddou M, Kim K, Rojc A, Modak M, Soucheray M, McGregor MJ, O'Leary P, Wolf D, Stevenson E, Foo TK, Mitchell D, Herrington KA, Muñoz DP, Tutuncuoglu B, Chen KH, Zheng F, Kreisberg JF, Diolaiti ME, Gordan JD, Coppé JP, Swaney DL, Xia B, van 't Veer L, Ashworth A, Ideker T, Krogan NJ. A protein interaction landscape of breast cancer. Science. 2021 Oct;374(6563):eabf3066. [doi: 10.1126/science.abf3066](https://www.science.org/doi/10.1126/science.abf3066). Epub 2021 Oct 1. PMID: 34591612; PMCID: PMC9040556.
+Gerasimavicius L, Livesey BJ, Marsh JA. Loss-of-function, gain-of-function and
+dominant-negative mutations have profoundly different effects on protein
+structure. *Nature Communications*. 2022;13:3895.
+[doi:10.1038/s41467-022-31686-6](https://doi.org/10.1038/s41467-022-31686-6).
+
+Bayrak CS, et al. Identification of discriminative gene-level and protein-level
+features associated with pathogenic gain-of-function and loss-of-function
+variants. *American Journal of Human Genetics*. 2021;108:2301-2318.
+[doi:10.1016/j.ajhg.2021.10.007](https://doi.org/10.1016/j.ajhg.2021.10.007).
+
+Full provenance, retrieval dates, source locations, and redistribution notes
+are stored in the evidence bundle and displayed in the app.
