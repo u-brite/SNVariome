@@ -1,33 +1,37 @@
-FROM rocker/r-ubuntu:22.04
+FROM rocker/r-ver:4.5.1
 
 LABEL maintainer="Shaurita Hutchins <sdhutchins@uab.edu>"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    sudo \
-    pandoc \
-    pandoc-citeproc \
-    libcurl4-gnutls-dev \
-    libcairo2-dev \
-    libxt-dev \
+    g++ \
+    libcurl4-openssl-dev \
+    libnode-dev \
     libssl-dev \
-    libssh2-1-dev \
+    libxml2-dev \
+    make \
     && rm -rf /var/lib/apt/lists/*
 
-COPY Rprofile.site /etc/R
-ENV _R_SHLIB_STRIP_=true
+RUN install2.r --error --skipinstalled renv
 
-RUN install.r shiny jsonlite httr shinyjs bslib BiocManager xml2 DT
-RUN R -e 'BiocManager::install(ask = F)' && R -e 'BiocManager::install("wppi")'
+WORKDIR /home/app
 
-RUN echo "local(options(shiny.port = 3838, shiny.host = '0.0.0.0'))" > /usr/lib/R/etc/Rprofile.site
+COPY renv.lock renv.lock
+COPY .Rprofile .Rprofile
+COPY renv/activate.R renv/activate.R
+COPY renv/settings.json renv/settings.json
+RUN RENV_CONFIG_CACHE_ENABLED=FALSE R -s -e 'renv::restore(prompt = FALSE)'
 
-RUN addgroup --system app && adduser --system --ingroup app app
-WORKDIR /home/app/app
-COPY app .
+RUN addgroup --system app \
+    && adduser --system --ingroup app --home /home/app --no-create-home app \
+    && mkdir -p /home/app/.cache/R \
+    && chown -R app:app /home/app
+COPY --chown=app:app . .
 
-RUN chown app:app -R /home/app/app
+ENV HOME=/home/app \
+    R_USER_CACHE_DIR=/home/app/.cache/R
+
 USER app
 
 EXPOSE 3838
 
-CMD ["R", "-e", "shiny::runApp('/home/app/app')"]
+CMD ["R", "-e", "shiny::runApp('/home/app', host = '0.0.0.0', port = 3838)"]
