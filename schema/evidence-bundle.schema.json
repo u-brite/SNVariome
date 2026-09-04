@@ -1,0 +1,150 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://snvariome.org/schema/evidence-bundle.schema.json",
+  "title": "SNVariome evidence bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "generated_at", "variants", "sources"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "variants": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/definitions/variant"}
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/definitions/source"}
+    }
+  },
+  "definitions": {
+    "evidence_class": {
+      "enum": [
+        "Direct experimental",
+        "Curated clinical",
+        "Computational prediction",
+        "Contextual association",
+        "Conflicting",
+        "Missing"
+      ]
+    },
+    "availability": {
+      "enum": ["available", "missing", "unavailable", "not_applicable"]
+    },
+    "assertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["term", "statement", "evidence_class", "source_ids"],
+      "properties": {
+        "term": {"type": "string", "minLength": 1},
+        "statement": {"type": "string", "minLength": 1},
+        "evidence_class": {"$ref": "#/definitions/evidence_class"},
+        "source_ids": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "clinical": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["availability", "classification", "review_status", "condition", "context", "conflicts", "source_ids"],
+      "properties": {
+        "availability": {"$ref": "#/definitions/availability"},
+        "classification": {"type": ["string", "null"]},
+        "review_status": {"type": ["string", "null"]},
+        "condition": {"type": ["string", "null"]},
+        "context": {"type": ["string", "null"]},
+        "conflicts": {"type": "array", "items": {"type": "string"}},
+        "source_ids": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "structure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["domain", "experimental_coverage", "predicted_coverage", "interface_proximity", "ligand_proximity", "ptm_proximity", "edc", "source_ids"],
+      "properties": {
+        "domain": {"type": ["string", "null"]},
+        "experimental_coverage": {"$ref": "#/definitions/availability"},
+        "predicted_coverage": {"$ref": "#/definitions/availability"},
+        "interface_proximity": {"type": ["string", "null"]},
+        "ligand_proximity": {"type": ["string", "null"]},
+        "ptm_proximity": {"type": ["string", "null"]},
+        "edc": {"type": ["number", "null"]},
+        "source_ids": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["interaction_id", "partner", "partner_uniprot", "state", "measurement_status", "wild_type_measurement", "mutant_measurement", "effect_size", "uncertainty", "assay", "model", "evidence_class", "source_ids", "source_location"],
+      "properties": {
+        "interaction_id": {"type": "string", "minLength": 1},
+        "partner": {"type": "string", "minLength": 1},
+        "partner_uniprot": {"type": ["string", "null"]},
+        "state": {"enum": ["Gained", "Lost", "Strengthened", "Weakened", "Unchanged", "Predicted disruption", "Unmeasured"]},
+        "measurement_status": {"enum": ["measured", "not_detected", "not_measured", "predicted"]},
+        "wild_type_measurement": {"type": ["number", "string", "null"]},
+        "mutant_measurement": {"type": ["number", "string", "null"]},
+        "effect_size": {"type": ["number", "null"]},
+        "uncertainty": {"type": ["number", "string", "null"]},
+        "assay": {"type": "string", "minLength": 1},
+        "model": {"type": "string", "minLength": 1},
+        "evidence_class": {"$ref": "#/definitions/evidence_class"},
+        "source_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "source_location": {"type": "string", "minLength": 1}
+      }
+    },
+    "variant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["variant_id", "identity", "clinical", "mechanisms", "structure", "interactions", "phenotypes", "hypotheses"],
+      "properties": {
+        "variant_id": {"type": "string", "minLength": 1},
+        "identity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["submitted_notation", "aliases", "genomic_hgvs", "protein_hgvs", "assembly", "transcript", "protein", "gene", "hgnc_id", "normalization_status", "warnings", "source_ids"],
+          "properties": {
+            "submitted_notation": {"type": "string"},
+            "aliases": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+            "genomic_hgvs": {"type": "string"},
+            "protein_hgvs": {"type": "string"},
+            "assembly": {"type": "string"},
+            "transcript": {"type": "string"},
+            "protein": {"type": "string"},
+            "gene": {"type": "string"},
+            "hgnc_id": {"type": "string"},
+            "normalization_status": {"enum": ["resolved", "ambiguous", "invalid", "unsupported"]},
+            "warnings": {"type": "array", "items": {"type": "string"}},
+            "source_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+          }
+        },
+        "clinical": {"$ref": "#/definitions/clinical"},
+        "mechanisms": {"type": "array", "items": {"$ref": "#/definitions/assertion"}},
+        "structure": {"$ref": "#/definitions/structure"},
+        "interactions": {"type": "array", "items": {"$ref": "#/definitions/interaction"}},
+        "phenotypes": {"type": "array", "items": {"$ref": "#/definitions/assertion"}},
+        "hypotheses": {"type": "array", "items": {"$ref": "#/definitions/assertion"}}
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "title", "source_type", "identifier", "url", "version", "retrieved_at", "license", "redistribution"],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "title": {"type": "string", "minLength": 1},
+        "source_type": {"type": "string", "minLength": 1},
+        "identifier": {"type": "string", "minLength": 1},
+        "url": {"type": "string", "format": "uri"},
+        "version": {"type": ["string", "null"]},
+        "retrieved_at": {"type": "string", "format": "date"},
+        "license": {"type": ["string", "null"]},
+        "redistribution": {"enum": ["permitted", "restricted", "unknown"]}
+      }
+    }
+  }
+}

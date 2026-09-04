@@ -1,0 +1,398 @@
+{
+  "schema_version": "0.1.0",
+  "generated_at": "2026-09-04T04:30:00Z",
+  "variants": [
+    {
+      "variant_id": "PIK3CA-NM_006218.4-c.1633G>A",
+      "identity": {
+        "submitted_notation": "PIK3CA p.Glu545Lys",
+        "aliases": ["PIK3CA E545K", "p.Glu545Lys", "p.E545K", "NM_006218.4:c.1633G>A"],
+        "genomic_hgvs": "NC_000003.12:g.179218303G>A",
+        "protein_hgvs": "NP_006209.2:p.Glu545Lys",
+        "assembly": "GRCh38",
+        "transcript": "NM_006218.4",
+        "protein": "NP_006209.2",
+        "gene": "PIK3CA",
+        "hgnc_id": "HGNC:8975",
+        "normalization_status": "resolved",
+        "warnings": ["Normalization is fixture-based and does not yet call an external normalization service."],
+        "source_ids": ["ncbi-gene-pik3ca"]
+      },
+      "clinical": {
+        "availability": "unavailable",
+        "classification": null,
+        "review_status": null,
+        "condition": null,
+        "context": null,
+        "conflicts": [],
+        "source_ids": []
+      },
+      "mechanisms": [
+        {
+          "term": "Gain of function",
+          "statement": "In the reported in vitro assay, BPIFA1 and SCGB2A1 inhibited WT PIK3CA kinase activity more strongly than E545K PIK3CA.",
+          "evidence_class": "Direct experimental",
+          "source_ids": ["kim-2021-pik3ca"]
+        }
+      ],
+      "structure": {
+        "domain": "Helical domain",
+        "experimental_coverage": "unavailable",
+        "predicted_coverage": "unavailable",
+        "interface_proximity": null,
+        "ligand_proximity": null,
+        "ptm_proximity": null,
+        "edc": null,
+        "source_ids": ["kim-2021-pik3ca"]
+      },
+      "interactions": [
+        {
+          "interaction_id": "e545k-scgb2a1-apms",
+          "partner": "SCGB2A1",
+          "partner_uniprot": "O75556",
+          "state": "Weakened",
+          "measurement_status": "measured",
+          "wild_type_measurement": "detected",
+          "mutant_measurement": "lower prey abundance than WT",
+          "effect_size": null,
+          "uncertainty": "Exact values require supplementary table S4",
+          "assay": "Affinity-purification mass spectrometry",
+          "model": "MCF7 human breast cancer cells",
+          "evidence_class": "Direct experimental",
+          "source_ids": ["kim-2021-pik3ca"],
+          "source_location": "Figure 3C; table S4"
+        },
+        {
+          "interaction_id": "e545k-anxa1-apms",
+          "partner": "ANXA1",
+          "partner_uniprot": "P04083",
+          "state": "Weakened",
+          "measurement_status": "measured",
+          "wild_type_measurement": "detected",
+          "mutant_measurement": "lower prey abundance than WT",
+          "effect_size": null,
+          "uncertainty": "Exact values require supplementary table S4",
+          "assay": "Affinity-purification mass spectrometry",
+          "model": "MCF7 human breast cancer cells",
+          "evidence_class": "Direct experimental",
+          "source_ids": ["kim-2021-pik3ca"],
+          "source_location": "Figure 3C; table S4"
+        },
+        {
+          "interaction_id": "e545k-bpifa1-apms",
+          "partner": "BPIFA1",
+          "partner_uniprot": "Q9NP55",
+          "state": "Lost",
+          "measurement_status": "not_detected",
+          "wild_type_measurement": "detected",
+          "mutant_measurement": "not detected",
+          "effect_size": null,
+          "uncertainty": "Exact values require supplementary table S4",
+          "assay": "Affinity-purification mass spectrometry",
+          "model": "MCF7 human breast cancer cells",
+          "evidence_class": "Direct experimental",
+          "source_ids": ["kim-2021-pik3ca"],
+          "source_location": "Figure 3C; table S4"
+        },
+        {
+          "interaction_id": "e545k-pik3r1-apms",
+          "partner": "PIK3R1",
+          "partner_uniprot": "P27986",
+          "state": "Unchanged",
+          "measurement_status": "measured",
+          "wild_type_measurement": "detected",
+          "mutant_measurement": "no visible change from WT",
+          "effect_size": null,
+          "uncertainty": "Exact values require supplementary table S4",
+          "assay": "Affinity-purification mass spectrometry",
+          "model": "MCF7 human breast cancer cells",
+          "evidence_class": "Direct experimental",
+          "source_ids": ["kim-2021-pik3ca"],
+          "source_location": "Figure 3C; table S4"
+        }
+      ],
+      "phenotypes": [],
+      "hypotheses": []
+    },
+    {
+      "variant_id": "PIK3CA-NM_006218.4-c.3127A>G",
+      "identity": {
+        "submitted_notation": "PIK3CA p.Met1043Val",
+        "aliases": ["PIK3CA M1043V", "p.Met1043Val", "p.M1043V", "NM_006218.4:c.3127A>G"],
+        "genomic_hgvs": "NC_000003.12:g.179234285A>G",
+        "protein_hgvs": "NP_006209.2:p.Met1043Val",
+        "assembly": "GRCh38",
+        "transcript": "NM_006218.4",
+        "protein": "NP_006209.2",
+        "gene": "PIK3CA",
+        "hgnc_id": "HGNC:8975",
+        "normalization_status": "resolved",
+        "warnings": ["Normalization is fixture-based and does not yet call an external normalization service."],
+        "source_ids": ["ncbi-gene-pik3ca"]
+      },
+      "clinical": {
+        "availability": "unavailable",
+        "classification": null,
+        "review_status": null,
+        "condition": null,
+        "context": null,
+        "conflicts": [],
+        "source_ids": []
+      },
+      "mechanisms": [
+        {
+          "term": "Unknown",
+          "statement": "M1043V was compared with WT by AP-MS, but Figure 3 does not report the kinase follow-up performed for E545K and H1047R.",
+          "evidence_class": "Missing",
+          "source_ids": ["kim-2021-pik3ca"]
+        }
+      ],
+      "structure": {
+        "domain": "Kinase domain",
+        "experimental_coverage": "unavailable",
+        "predicted_coverage": "unavailable",
+        "interface_proximity": null,
+        "ligand_proximity": null,
+        "ptm_proximity": null,
+        "edc": null,
+        "source_ids": ["kim-2021-pik3ca"]
+      },
+      "interactions": [
+        {
+          "interaction_id": "m1043v-scgb2a1-apms",
+          "partner": "SCGB2A1",
+          "partner_uniprot": "O75556",
+          "state": "Weakened",
+          "measurement_status": "measured",
+          "wild_type_measurement": "detected",
+          "mutant_measurement": "lower prey abundance than WT",
+          "effect_size": null,
+          "uncertainty": "Exact values require supplementary table S4",
+          "assay": "Affinity-purification mass spectrometry",
+          "model": "MCF7 human breast cancer cells",
+          "evidence_class": "Direct experimental",
+          "source_ids": ["kim-2021-pik3ca"],
+          "source_location": "Figure 3C; table S4"
+        },
+        {
+          "interaction_id": "m1043v-anxa1-apms",
+          "partner": "ANXA1",
+          "partner_uniprot": "P04083",
+          "state": "Weakened",
+          "measurement_status": "measured",
+          "wild_type_measurement": "detected",
+          "mutant_measurement": "lower prey abundance than WT",
+          "effect_size": null,
+          "uncertainty": "Exact values require supplementary table S4",
+          "assay": "Affinity-purification mass spectrometry",
+          "model": "MCF7 human breast cancer cells",
+          "evidence_class": "Direct experimental",
+          "source_ids": ["kim-2021-pik3ca"],
+          "source_location": "Figure 3C; table S4"
+        },
+        {
+          "interaction_id": "m1043v-bpifa1-apms",
+          "partner": "BPIFA1",
+          "partner_uniprot": "Q9NP55",
+          "state": "Weakened",
+          "measurement_status": "measured",
+          "wild_type_measurement": "detected",
+          "mutant_measurement": "lower prey abundance than WT",
+          "effect_size": null,
+          "uncertainty": "Exact values require supplementary table S4",
+          "assay": "Affinity-purification mass spectrometry",
+          "model": "MCF7 human breast cancer cells",
+          "evidence_class": "Direct experimental",
+          "source_ids": ["kim-2021-pik3ca"],
+          "source_location": "Figure 3C; table S4"
+        },
+        {
+          "interaction_id": "m1043v-irs1-apms",
+          "partner": "IRS1",
+          "partner_uniprot": "P35568",
+          "state": "Strengthened",
+          "measurement_status": "measured",
+          "wild_type_measurement": "detected",
+          "mutant_measurement": "higher prey abundance than WT",
+          "effect_size": null,
+          "uncertainty": "Exact values require supplementary table S4",
+          "assay": "Affinity-purification mass spectrometry",
+          "model": "MCF7 human breast cancer cells",
+          "evidence_class": "Direct experimental",
+          "source_ids": ["kim-2021-pik3ca"],
+          "source_location": "Figure 3C; table S4"
+        },
+        {
+          "interaction_id": "m1043v-pik3r1-apms",
+          "partner": "PIK3R1",
+          "partner_uniprot": "P27986",
+          "state": "Unchanged",
+          "measurement_status": "measured",
+          "wild_type_measurement": "detected",
+          "mutant_measurement": "no visible change from WT",
+          "effect_size": null,
+          "uncertainty": "Exact values require supplementary table S4",
+          "assay": "Affinity-purification mass spectrometry",
+          "model": "MCF7 human breast cancer cells",
+          "evidence_class": "Direct experimental",
+          "source_ids": ["kim-2021-pik3ca"],
+          "source_location": "Figure 3C; table S4"
+        }
+      ],
+      "phenotypes": [],
+      "hypotheses": []
+    },
+    {
+      "variant_id": "PIK3CA-NM_006218.4-c.3140A>G",
+      "identity": {
+        "submitted_notation": "PIK3CA p.His1047Arg",
+        "aliases": ["PIK3CA H1047R", "p.His1047Arg", "p.H1047R", "NM_006218.4:c.3140A>G"],
+        "genomic_hgvs": "NC_000003.12:g.179234297A>G",
+        "protein_hgvs": "NP_006209.2:p.His1047Arg",
+        "assembly": "GRCh38",
+        "transcript": "NM_006218.4",
+        "protein": "NP_006209.2",
+        "gene": "PIK3CA",
+        "hgnc_id": "HGNC:8975",
+        "normalization_status": "resolved",
+        "warnings": ["Normalization is fixture-based and does not yet call an external normalization service."],
+        "source_ids": ["ncbi-gene-pik3ca"]
+      },
+      "clinical": {
+        "availability": "unavailable",
+        "classification": null,
+        "review_status": null,
+        "condition": null,
+        "context": null,
+        "conflicts": [],
+        "source_ids": []
+      },
+      "mechanisms": [
+        {
+          "term": "Gain of function",
+          "statement": "In the reported in vitro assay, BPIFA1 and SCGB2A1 inhibited WT PIK3CA kinase activity more strongly than H1047R PIK3CA.",
+          "evidence_class": "Direct experimental",
+          "source_ids": ["kim-2021-pik3ca"]
+        }
+      ],
+      "structure": {
+        "domain": "Kinase domain",
+        "experimental_coverage": "unavailable",
+        "predicted_coverage": "unavailable",
+        "interface_proximity": null,
+        "ligand_proximity": null,
+        "ptm_proximity": null,
+        "edc": null,
+        "source_ids": ["kim-2021-pik3ca"]
+      },
+      "interactions": [
+        {
+          "interaction_id": "h1047r-scgb2a1-apms",
+          "partner": "SCGB2A1",
+          "partner_uniprot": "O75556",
+          "state": "Weakened",
+          "measurement_status": "measured",
+          "wild_type_measurement": "detected",
+          "mutant_measurement": "lower prey abundance than WT",
+          "effect_size": null,
+          "uncertainty": "Exact values require supplementary table S4",
+          "assay": "Affinity-purification mass spectrometry",
+          "model": "MCF7 human breast cancer cells",
+          "evidence_class": "Direct experimental",
+          "source_ids": ["kim-2021-pik3ca"],
+          "source_location": "Figure 3C; table S4"
+        },
+        {
+          "interaction_id": "h1047r-anxa1-apms",
+          "partner": "ANXA1",
+          "partner_uniprot": "P04083",
+          "state": "Weakened",
+          "measurement_status": "measured",
+          "wild_type_measurement": "detected",
+          "mutant_measurement": "lower prey abundance than WT",
+          "effect_size": null,
+          "uncertainty": "Exact values require supplementary table S4",
+          "assay": "Affinity-purification mass spectrometry",
+          "model": "MCF7 human breast cancer cells",
+          "evidence_class": "Direct experimental",
+          "source_ids": ["kim-2021-pik3ca"],
+          "source_location": "Figure 3C; table S4"
+        },
+        {
+          "interaction_id": "h1047r-bpifa1-apms",
+          "partner": "BPIFA1",
+          "partner_uniprot": "Q9NP55",
+          "state": "Weakened",
+          "measurement_status": "measured",
+          "wild_type_measurement": "detected",
+          "mutant_measurement": "lower prey abundance than WT",
+          "effect_size": null,
+          "uncertainty": "Exact values require supplementary table S4",
+          "assay": "Affinity-purification mass spectrometry",
+          "model": "MCF7 human breast cancer cells",
+          "evidence_class": "Direct experimental",
+          "source_ids": ["kim-2021-pik3ca"],
+          "source_location": "Figure 3C; table S4"
+        },
+        {
+          "interaction_id": "h1047r-irs1-apms",
+          "partner": "IRS1",
+          "partner_uniprot": "P35568",
+          "state": "Strengthened",
+          "measurement_status": "measured",
+          "wild_type_measurement": "detected",
+          "mutant_measurement": "higher prey abundance than WT",
+          "effect_size": null,
+          "uncertainty": "Exact values require supplementary table S4",
+          "assay": "Affinity-purification mass spectrometry",
+          "model": "MCF7 human breast cancer cells",
+          "evidence_class": "Direct experimental",
+          "source_ids": ["kim-2021-pik3ca"],
+          "source_location": "Figure 3C; table S4"
+        },
+        {
+          "interaction_id": "h1047r-pik3r1-apms",
+          "partner": "PIK3R1",
+          "partner_uniprot": "P27986",
+          "state": "Unchanged",
+          "measurement_status": "measured",
+          "wild_type_measurement": "detected",
+          "mutant_measurement": "no visible change from WT",
+          "effect_size": null,
+          "uncertainty": "Exact values require supplementary table S4",
+          "assay": "Affinity-purification mass spectrometry",
+          "model": "MCF7 human breast cancer cells",
+          "evidence_class": "Direct experimental",
+          "source_ids": ["kim-2021-pik3ca"],
+          "source_location": "Figure 3C; table S4"
+        }
+      ],
+      "phenotypes": [],
+      "hypotheses": []
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "kim-2021-pik3ca",
+      "title": "A protein interaction landscape of breast cancer",
+      "source_type": "Journal article and supplementary data",
+      "identifier": "doi:10.1126/science.abf3066; PMID:34591612",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9040556/",
+      "version": "Author manuscript available in PMC",
+      "retrieved_at": "2026-09-03",
+      "license": "Redistribution terms for the supplementary data have not been evaluated",
+      "redistribution": "unknown"
+    },
+    {
+      "source_id": "ncbi-gene-pik3ca",
+      "title": "NCBI Gene: PIK3CA phosphatidylinositol-4,5-bisphosphate 3-kinase catalytic subunit alpha",
+      "source_type": "Reference sequence database",
+      "identifier": "NCBI Gene:5290",
+      "url": "https://www.ncbi.nlm.nih.gov/gene/5290",
+      "version": "GRCh38; NM_006218.4; NP_006209.2",
+      "retrieved_at": "2026-09-03",
+      "license": null,
+      "redistribution": "unknown"
+    }
+  ]
+}
